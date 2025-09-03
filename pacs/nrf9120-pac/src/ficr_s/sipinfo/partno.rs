@@ -1,68 +1,54 @@
 #[doc = "Register `PARTNO` reader"]
-pub struct R(crate::R<PARTNO_SPEC>);
-impl core::ops::Deref for R {
-    type Target = crate::R<PARTNO_SPEC>;
-    #[inline(always)]
-    fn deref(&self) -> &Self::Target {
-        &self.0
-    }
-}
-impl From<crate::R<PARTNO_SPEC>> for R {
-    #[inline(always)]
-    fn from(reader: crate::R<PARTNO_SPEC>) -> Self {
-        R(reader)
-    }
-}
-#[doc = "Field `PARTNO` reader - "]
-pub type PARTNO_R = crate::FieldReader<u32, PARTNO_A>;
+pub type R = crate::R<PartnoSpec>;
 #[doc = "\n\nValue on reset: 4294967295"]
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 #[repr(u32)]
-pub enum PARTNO_A {
+pub enum Partno {
     #[doc = "37216: Device is an nRF9160 sip"]
     _9160 = 37216,
 }
-impl From<PARTNO_A> for u32 {
+impl From<Partno> for u32 {
     #[inline(always)]
-    fn from(variant: PARTNO_A) -> Self {
+    fn from(variant: Partno) -> Self {
         variant as _
     }
 }
-impl PARTNO_R {
+impl crate::FieldSpec for Partno {
+    type Ux = u32;
+}
+impl crate::IsEnum for Partno {}
+#[doc = "Field `PARTNO` reader - "]
+pub type PartnoR = crate::FieldReader<Partno>;
+impl PartnoR {
     #[doc = "Get enumerated values variant"]
     #[inline(always)]
-    pub fn variant(&self) -> Option<PARTNO_A> {
+    pub const fn variant(&self) -> Option<Partno> {
         match self.bits {
-            37216 => Some(PARTNO_A::_9160),
+            37216 => Some(Partno::_9160),
             _ => None,
         }
     }
-    #[doc = "Checks if the value of the field is `_9160`"]
+    #[doc = "Device is an nRF9160 sip"]
     #[inline(always)]
     pub fn is_9160(&self) -> bool {
-        *self == PARTNO_A::_9160
+        *self == Partno::_9160
     }
 }
 impl R {
     #[doc = "Bits 0:31"]
     #[inline(always)]
-    pub fn partno(&self) -> PARTNO_R {
-        PARTNO_R::new(self.bits)
+    pub fn partno(&self) -> PartnoR {
+        PartnoR::new(self.bits)
     }
 }
-#[doc = "SIP part number\n\nThis register you can [`read`](crate::generic::Reg::read). See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [partno](index.html) module"]
-pub struct PARTNO_SPEC;
-impl crate::RegisterSpec for PARTNO_SPEC {
+#[doc = "SIP part number\n\nYou can [`read`](crate::Reg::read) this register and get [`partno::R`](R). See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+pub struct PartnoSpec;
+impl crate::RegisterSpec for PartnoSpec {
     type Ux = u32;
 }
-#[doc = "`read()` method returns [partno::R](R) reader structure"]
-impl crate::Readable for PARTNO_SPEC {
-    type Reader = R;
-}
+#[doc = "`read()` method returns [`partno::R`](R) reader structure"]
+impl crate::Readable for PartnoSpec {}
 #[doc = "`reset()` method sets PARTNO to value 0xffff_ffff"]
-impl crate::Resettable for PARTNO_SPEC {
-    #[inline(always)]
-    fn reset_value() -> Self::Ux {
-        0xffff_ffff
-    }
+impl crate::Resettable for PartnoSpec {
+    const RESET_VALUE: u32 = 0xffff_ffff;
 }
